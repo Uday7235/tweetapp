@@ -1,0 +1,24 @@
+package com.learn.opp.collection;
+
+import java.util.HashSet;
+import java.util.Iterator;
+;
+
+public class HashSetDemo {
+
+	public static void main(String[] args) {
+		 HashSet<String> member=new HashSet<>();
+		 member.add("ajay");
+		 member.add("shiva");
+		  member.add("harish");
+		  member.add("harish");
+		
+		    
+		    Iterator<String> itr= member.iterator();
+		    while(itr.hasNext())
+		    System.out.println(itr.next());
+			}
+
+	}
+
+

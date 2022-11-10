@@ -1,0 +1,40 @@
+package com.junit.testcalculator;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import com.junit.test.Calculator;
+
+public class CalculatorTest {
+
+	@Test
+	@DisplayName("adding two numbers")
+	void testAddMethod() {
+		Calculator calc=new Calculator();
+		int sum=calc.add(100, 100);
+		assertEquals(200,sum);
+		System.out.println("sum is " +sum);
+	}
+	
+	@Test
+	@DisplayName("subtracting two numbers")
+	void testSubMethod() {
+		Calculator calc=new Calculator();
+		int total=calc.sub(100, 90);
+		assertEquals(10,total);
+		System.out.println("diff is " +total);
+	}
+	
+	@Test
+	@DisplayName("multiplying two numbers")
+	void testMultiplyMethod() {
+		Calculator calc=new Calculator();
+		int multiply= calc.multiply(100,10);
+		assertEquals(1000,multiply);
+		System.out.println("product is " +multiply);
+	}
+
+
+}

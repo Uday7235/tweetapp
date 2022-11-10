@@ -1,0 +1,12 @@
+package com.learn.opp.collection;
+
+import java.util.TreeSet;
+
+public class PriorityQueue {
+
+	public static void main(String[] args) {
+		PriorityQueue<String> cars=new PriorityQueue<String>();
+
+	}
+
+}

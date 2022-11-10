@@ -1,0 +1,73 @@
+package com.start.student;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class StudentDao {
+	
+
+	
+public static boolean addStudentToDb(Student st) {
+	boolean status=false;
+	try {
+		Connection con =ConnectionProvider.createC();
+		String query= "insert into students(sname,phone,scity) values(?,?,?)";
+		PreparedStatement ptstmt=con.prepareStatement(query);
+		ptstmt.setString(1, st.getStudentName());
+		ptstmt.setString(2, st.getStudentPhone());
+		ptstmt.setString(3, st.getStudentCity());
+		ptstmt.executeUpdate();
+		status=true;
+	}
+	catch(Exception e) {
+		
+	}
+	return status;
+}
+public static boolean deleteStudent(int studentId) {
+	boolean status=false;
+	try {
+		Connection con =ConnectionProvider.createC();
+		String query= "delete from students where sid=?";
+		PreparedStatement ptstmt=con.prepareStatement(query);
+		ptstmt.setInt(1, studentId);
+		
+		ptstmt.executeUpdate();
+		status=true;
+	}
+	catch(Exception e) {
+		
+	}
+	return status;
+}
+
+public static boolean getAllStudents() {
+	boolean status=false;
+	try {
+		Connection con =ConnectionProvider.createC();
+		String query1= "select * from students";
+		Statement stmt=con.createStatement();
+		
+		
+		ResultSet rs =stmt.executeQuery(query1);
+		while(rs.next()) {
+			int id = rs.getInt(1);
+			String name=rs.getString(2);
+       String phone=rs.getString(3);
+       String city=rs.getString("scity");
+      
+	       
+		
+		}
+		
+		
+		status=true;
+	}
+	catch(Exception e) {
+		
+	}
+	return status;
+}
+}

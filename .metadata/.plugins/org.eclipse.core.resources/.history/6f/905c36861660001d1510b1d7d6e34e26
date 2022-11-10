@@ -1,0 +1,12 @@
+package com.start.student;
+
+import java.sql.Connection;
+
+public class StudentDao {
+public static void addStudent(Student st) {
+	try {
+		Connection con =ConnectionProvider.createC();
+		String query= "insert into student"
+	}
+}
+}

@@ -1,0 +1,80 @@
+package com.tweet.user;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+
+
+
+public class UserDao {
+	public static boolean addUserToDb(User st) {
+		boolean status=false;
+		try {
+			Connection con =ConnectionToDb.createConnection();
+			String query= "insert into users(uname,password,email) values(?,?,?)";
+			PreparedStatement ptstmt=con.prepareStatement(query);
+			ptstmt.setString(1, st.getFirstName());
+			ptstmt.setString(2, st.getPassword());
+			ptstmt.setString(3, st.getEmail());
+			ptstmt.executeUpdate();
+			status=true;
+		}
+		catch(Exception e) {
+			
+		}
+		return status;
+	}
+	public static boolean loginUser(String email,String pass ) {
+		boolean status=false;
+		try {
+			Connection con =ConnectionToDb.createConnection();
+			String query1= "select * from users";
+			Statement stmt=con.createStatement();
+			
+			
+			ResultSet rs =stmt.executeQuery(query1);
+			while(rs.next()) {
+				String uname=rs.getString(1);
+				String name = rs.getString(2);
+				String pass1=rs.getString(3);
+				
+				if(name.equals(email)&&pass.equals(pass)) {
+				System.out.println("Hi "+uname);
+				}
+				else {
+					System.out.println("please enter valid details");
+				}
+			}
+			
+			status=true;
+		}
+		catch(Exception e) {
+			
+		}
+		return status;
+	}
+	public static boolean forgotPassword(String email,String name ) {
+		boolean status=false;
+		try {
+			Connection con =ConnectionToDb.createConnection();
+			String query1= "select uname from users where email=? and password=?";
+			PreparedStatement stmt=con.prepareStatement(query1);
+			stmt.setString(1, email);
+			stmt.setString(2, pass);
+			
+			ResultSet rs =stmt.executeQuery(query1);
+			while(rs.next()) {
+				String name = rs.getString(1);
+				System.out.println("Hi "+name);
+			}
+			
+			status=true;
+		}
+		catch(Exception e) {
+			
+		}
+		return status;
+	}
+}

@@ -1,0 +1,18 @@
+package com.junit.testcalculator;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+import com.junit.test.Calculator;
+
+public class CalculatorTest {
+
+	@Test
+	void testMethod() {
+		Calculator calc=new Calculator();
+		int sum=calc.add(100, 100);
+		System.out.println("sum is " +sum);
+	}
+
+}

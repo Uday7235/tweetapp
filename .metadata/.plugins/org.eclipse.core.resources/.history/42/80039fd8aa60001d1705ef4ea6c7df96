@@ -1,0 +1,27 @@
+package com.tweet.user;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+
+
+
+public class UserDao {
+	public static boolean addUserToDb(User st) {
+		boolean status=false;
+		try {
+			Connection con =ConnectionToDb.createConnection();
+			String query= "insert into students(sname,phone,scity) values(?,?,?)";
+			PreparedStatement ptstmt=con.prepareStatement(query);
+			ptstmt.setString(1, st.getFirstName());
+			ptstmt.setString(2, st.getPassword());
+			ptstmt.setString(3, st.getEmail());
+			ptstmt.executeUpdate();
+			status=true;
+		}
+		catch(Exception e) {
+			
+		}
+		return status;
+	}
+}

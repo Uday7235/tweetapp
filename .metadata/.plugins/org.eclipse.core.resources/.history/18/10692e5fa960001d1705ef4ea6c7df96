@@ -1,0 +1,22 @@
+package com.tweet.start;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class StartTweet {
+
+	public static void main(String[] args) throws IOException {
+		System.out.println("Welcome to TweetApp");
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		while(true) {
+		System.out.println("press 1 to Register to TweetApp");
+		System.out.println("press 2 to Login to TweetApp");
+		System.out.println("press 3 forgot password");
+		System.out.println("press 4 to exit app");
+		Integer choice=Integer.parseInt(br.readLine());
+		
+	}
+
+	}
+}

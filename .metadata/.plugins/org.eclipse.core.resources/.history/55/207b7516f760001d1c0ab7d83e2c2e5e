@@ -1,0 +1,7 @@
+package com.tweet.user;
+
+public class Tweet {
+private String username;
+private String tweet;
+
+}

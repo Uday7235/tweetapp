@@ -1,0 +1,70 @@
+package com.start;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import com.start.student.Student;
+import com.start.student.StudentDao;
+
+public class Start {
+	public static void main(String[] args) throws IOException{
+		System.out.println("hello world");
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		while(true) {
+		System.out.println("press 1 to add a student");
+		System.out.println("press 2 to delete a student");
+		System.out.println("press 3 to display a student");
+		System.out.println("press 4 to exit app");
+		Integer choice=Integer.parseInt(br.readLine());
+		if(choice==1) {
+			//add a student
+			System.out.println("enter student full name");
+			String name=br.readLine();
+			System.out.println("enter student phone number");
+			String  phone=br.readLine();
+			System.out.println("enter student city name");
+			String city=br.readLine();
+			Student st=new Student(name,phone,city);
+			System.out.println(st);
+			boolean answer=StudentDao.addStudentToDb(st);
+			if(answer) {
+				System.out.println("student added successfully");
+			}
+			else {
+				System.out.println("student not added ");
+			}
+		}
+		else if(choice==2) {
+			//delete a student
+			System.out.println("enter the student id to delete");
+			int studentId=Integer.parseInt(br.readLine());
+					boolean answer=StudentDao.deleteStudent(studentId);
+			if(answer) {
+				System.out.println("student deleted successfully");
+			}
+			else {
+				System.out.println("student not deleted ");
+			}
+    	   
+		}
+		else if(choice==3) {
+	      //display a student
+    	   
+        }
+		else if(choice==4) {
+	    //to exit the application
+    	   
+        }
+		else {
+		
+		}
+	}
+		
+	}
+	
+		
+
+	
+
+}

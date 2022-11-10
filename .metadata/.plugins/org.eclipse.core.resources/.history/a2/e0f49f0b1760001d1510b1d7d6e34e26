@@ -1,0 +1,20 @@
+package com.start.student;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+public class StudentDao {
+public static void addStudent(Student st) {
+	try {
+		Connection con =ConnectionProvider.createC();
+		String query= "insert into students(sname,sphone,scity" +"values(?,?,?)";
+		PreparedStatement ptstmt=con.prepareStatement(query);
+		ptstmt.setString(1, st.getStudentName());
+		ptstmt.setString(2, st.getStudentPhone());
+		ptstmt.setString(3, st.getStudentCity());
+	}
+	catch(Exception e) {
+		
+	}
+}
+}
