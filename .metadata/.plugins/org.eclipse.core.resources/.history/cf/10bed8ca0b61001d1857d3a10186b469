@@ -8,7 +8,7 @@ public class TweetDao {
 		boolean status=false;
 		try {
 			Connection con =ConnectionToDb.createConnection();
-			String query= "insert into tweet(uname,tweetinfo) values(?,?)";
+			String query= "insert into tweet(uname,tweetinfo) values(?,?,?)";
 			PreparedStatement ptstmt=con.prepareStatement(query);
 			ptstmt.setString(1, st.getUsername());
 			ptstmt.setString(2, st.getTweet());
