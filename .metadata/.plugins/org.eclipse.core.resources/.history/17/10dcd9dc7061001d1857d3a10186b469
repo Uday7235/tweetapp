@@ -71,7 +71,7 @@ public class StartTweet {
 				System.out.println(" successfully updated new password");
 			}
 			else {
-				System.out.println("please enter valid email and first name");
+				System.out.println("password not updated successfully ");
 			}
     	   
         }

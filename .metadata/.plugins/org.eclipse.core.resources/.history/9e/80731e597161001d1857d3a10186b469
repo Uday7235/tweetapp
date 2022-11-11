@@ -146,14 +146,13 @@ public class TweetDao {
 				ptstmt.setString(1,pass2);
 				ptstmt.setString(2, email);
 				ptstmt.executeUpdate();
-				status= true;
 			}
 			
 		
 			
 			}
 			
-			
+			status=true;
 		}
 		catch(Exception e) {
 			

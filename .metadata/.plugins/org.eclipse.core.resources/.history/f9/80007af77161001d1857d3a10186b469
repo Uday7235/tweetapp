@@ -107,7 +107,7 @@ public class UserDao {
 						System.out.println(" reset password is successful");
 					}
 					else {
-						System.out.println("enter valid old password");
+						System.out.println("reset password is not successful");
 					}
 					
 				}

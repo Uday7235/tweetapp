@@ -138,7 +138,7 @@ public class TweetDao {
 			
 			String email1 = rs.getString(1);
 			String pass3=rs.getString(2);
-			if(email.equals(email1)&&pass1.equals(pass3)) {
+			if(email1.equals(email)&&pass3.equals(pass1)) {
 				Connection con1 =ConnectionToDb.createConnection();
 				String query3= "UPDATE users SET password = ?  WHERE email = ?";
 						
@@ -146,14 +146,13 @@ public class TweetDao {
 				ptstmt.setString(1,pass2);
 				ptstmt.setString(2, email);
 				ptstmt.executeUpdate();
-				status= true;
 			}
 			
 		
 			
 			}
 			
-			
+			status=true;
 		}
 		catch(Exception e) {
 			

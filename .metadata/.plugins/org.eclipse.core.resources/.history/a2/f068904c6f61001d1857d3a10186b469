@@ -107,7 +107,7 @@ public class UserDao {
 						System.out.println(" reset password is successful");
 					}
 					else {
-						System.out.println("enter valid old password");
+						System.out.println("reset password is not successful");
 					}
 					
 				}
@@ -138,16 +138,15 @@ public class UserDao {
 		boolean status=false;
 		try {
 			Connection con =ConnectionToDb.createConnection();
-			String query1= "select uname,email from users";
+			String query1= "select email,password from users";
 			Statement stmt=con.createStatement();
 			
 			
 			ResultSet rs =stmt.executeQuery(query1);
 			while(rs.next()) {
-				String uname1 = rs.getString(1);
-				String email2 = rs.getString(2);
-				
-			if(name.equals(uname1)&&email.equals(email2)) {
+				String name1 = rs.getString(1);
+				String email1 = rs.getString(2);
+			if(email.equals(email1)&&name.equals(name1)) {
 				Connection con1 =ConnectionToDb.createConnection();
 				String query= "UPDATE users SET password = ?  WHERE email = ?";
 						
@@ -155,14 +154,14 @@ public class UserDao {
 				ptstmt.setString(1,us);
 				ptstmt.setString(2, email);
 				ptstmt.executeUpdate();
-				status=true;
+				
 			}
 //			else {
 //				System.out.println("enter valid details");
 //			}
 		//	status=true;
 		}
-		//	status=true;
+			status=true;
 		}
 		catch(Exception e) {
 			
