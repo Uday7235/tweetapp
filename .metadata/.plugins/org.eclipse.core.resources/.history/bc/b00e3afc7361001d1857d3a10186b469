@@ -77,7 +77,7 @@ public class StartTweet {
         }
 		else if(choice==4) {
 	    //to exit the application
-    	   break;
+    	   System.exit(0);
         }
 		
 		
