@@ -66,7 +66,7 @@ public class TweetDao {
 		boolean status=false;
 		try {
 			Connection con =ConnectionToDb.createConnection();
-			String query= "select * from tweet" ;
+			String query= "select tweetinfo from tweet" ;
 		     Statement stmt=con.createStatement();
 			
 			ResultSet rs =stmt.executeQuery(query);
@@ -75,8 +75,7 @@ public class TweetDao {
 			
 			
 			String name = rs.getString(1);
-			String tweets=rs.getString(2);
-			System.out.println("User:" +name+" tweet :"+tweets);
+			System.out.println(name);
 			
 			
 			
