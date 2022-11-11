@@ -28,7 +28,7 @@ public class StartTweet {
 			System.out.println("enter password");
 			String password=br.readLine();
 			User st=new User(name,email,password);
-//			System.out.println(st);
+			System.out.println(st);
 			boolean answer=UserDao.addUserToDb(st);
 			if(answer) {
 				System.out.println("User registered successfully");
