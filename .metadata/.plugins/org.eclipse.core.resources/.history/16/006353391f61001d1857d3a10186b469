@@ -1,0 +1,62 @@
+package com.tweet.user;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class TweetDao {
+	public static boolean addTweetToDb(Tweet st) {
+		boolean status=false;
+		try {
+			Connection con =ConnectionToDb.createConnection();
+			String query= "insert into tweet(uname,tweetinfo) values(?,?)";
+			PreparedStatement ptstmt=con.prepareStatement(query);
+			ptstmt.setString(1, st.getUsername());
+			ptstmt.setString(2, st.getTweet());
+			
+			ptstmt.executeUpdate();
+			status=true;
+		}
+		catch(Exception e) {
+			
+		}
+		return status;
+	}
+	
+	public static boolean viewMyTweet(String uname) {
+		boolean status=false;
+		try {
+			Connection con =ConnectionToDb.createConnection();
+			String query= "select * from tweet" ;
+		     Statement stmt=con.createStatement();
+			
+			ResultSet rs =stmt.executeQuery(query);
+			System.out.println("my tweets:");
+			while(rs.next()) {
+			
+			
+			String name = rs.getString(1);
+			String name2=rs.getString(2);
+			
+			if(name.equals(uname)) {
+				
+				
+				System.out.println(name2);	
+			}
+			
+			
+//			if(uname1.equals(uname)) {
+//				
+//			}
+			
+			}
+			
+			status=true;
+		}
+		catch(Exception e) {
+			
+		}
+		return status;
+	}
+}

@@ -46,11 +46,11 @@ public class StartTweet {
 			String password=br.readLine();
 			boolean answer=UserDao.loginUser(email,password);
 			if(answer) {
-				System.out.println("user logged in successfully");
+				System.out.println("user logged in and logged out successfully");
 				
 			}
 			else {
-				System.out.println("user not logged in ");
+				System.out.println("enter valid details to login ");
 			}
 			
 			

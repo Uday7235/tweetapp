@@ -43,7 +43,8 @@ public class UserDao {
 				String name = rs.getString(2);
 				String pass1=rs.getString(3);
 				
-				if(name.equals(email)&&pass.equals(pass)) {
+				if(name.equals(email)&&pass.equals(pass1)) {
+					while(true) {
 				System.out.println("Hi "+uname);
 				
 				System.out.println("press 1 to post tweet");
@@ -59,15 +60,75 @@ public class UserDao {
 					String tweet=br.readLine();
 					Tweet tw=new Tweet(uname,tweet);
 					boolean st=TweetDao.addTweetToDb(tw);
+					if(st) {
+						System.out.println("added tweet successfully");
+					}
+					else {
+						System.out.println("not added tweet successfully");
+					}
 				}
+				else if(choice1==2) {
+					   
+					boolean st=TweetDao.viewMyTweet(uname);
+					if(st) {
+						System.out.println("viewed tweets successfully");
+					}
+					else {
+						System.out.println("tweets not viewed successfully");
+					}
 				}
+				else if(choice1==3) {
+					boolean st1=TweetDao.viewAllTweets();
+					if(st1) {
+						System.out.println("all tweets viewed");
+					}
+					else {
+						System.out.println("cannot view all tweets");
+					}
+					
+				}
+				else if(choice1==4) {
+					boolean st1=TweetDao.viewAllUsers();
+					if(st1) {
+						System.out.println("all users viewed");
+					}
+					else {
+						System.out.println("cannot view all users");
+					}
+					
+				}
+				else if(choice1==5) {
+					System.out.println("enter the old password");
+					String  uname2=br.readLine();
+					System.out.println("enter the new password");
+					String  pass3=br.readLine();
+					boolean st1=TweetDao.resetPassword(uname2,pass3,name);
+					if(st1) {
+						System.out.println(" reset password is successful");
+					}
+					else {
+						System.out.println("reset password is not successful");
+					}
+					
+				}
+				else if(choice1==6) {
+					break;
+					
+				}
+				
 				else {
 					System.out.println("please enter valid details");
 				}
+				
 			}
-			
-			status=true;
+					status=true;
+				
+				}
+				
+			}
 		}
+			
+		
 		catch(Exception e) {
 			
 		}
@@ -95,9 +156,9 @@ public class UserDao {
 				ptstmt.executeUpdate();
 				
 			}
-			else {
-				System.out.println("enter valid details");
-			}
+//			else {
+//				System.out.println("enter valid details");
+//			}
 			status=true;
 		}
 		}
